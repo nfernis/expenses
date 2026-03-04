@@ -1,8 +1,8 @@
 name: Update README Tree
 
 on:
-  push:                    # ← добавить это
-    branches: [ main ]     # ← и это
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main, develop ]
 
