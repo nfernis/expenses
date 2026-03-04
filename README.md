@@ -11,12 +11,19 @@
 ├── pom.xml
 ├── src
 │   └── main
-│       └── java
-│           └── com
-│               └── example
-│                   └── expenses
-│                       └── Main.java
+│       ├── java
+│       │   └── com
+│       │       └── example
+│       │           └── expenses
+│       │               ├── Main.java
+│       │               ├── ui
+│       │               │   └── MainWindow.java
+│       │               └── utils
+│       │                   └── CustomLevel.java
+│       └── resources
+│           └── icons
+│               └── icon.png
 └── tree.txt
 
-9 directories, 6 files
+13 directories, 9 files
 ```
