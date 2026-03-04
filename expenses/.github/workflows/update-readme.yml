@@ -1,37 +1,7 @@
-name: Update README Tree
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main, develop ]
-
-permissions:
-  contents: write
-
+name: Test Workflow
+on: [push]
 jobs:
-  update-readme:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Generate tree
-        run: |
-          echo '```' > tree.txt
-          tree -a -I ".git|.idea|target|out|*.iml" >> tree.txt
-          echo '```' >> tree.txt
-
-      - name: Update README
-        run: |
-          sed -i '/<!-- TREE START -->/,/<!-- TREE END -->/{/<!-- TREE START -->/!{/<!-- TREE END -->/!d}}' README.md
-          sed -i '/<!-- TREE START -->/r tree.txt' README.md
-
-      - name: Commit and push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git diff --cached --quiet || (git commit -m "Обновлена структура проекта в README" && git push)
+      - run: echo "Hello"
