@@ -1,12 +1,17 @@
 package com.example.expenses;
-
-import javax.swing.*;
+import com.example.expenses.ui.MainWindow;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Expenses");
-        frame.setSize(300, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        /*временно*/
+        // Глобальная настройка логирования
+        Logger rootLogger = Logger.getLogger("");
+        rootLogger.setLevel(Level.ALL);
+        /**/
+        //запуск окна
+        MainWindow window = new MainWindow();
+        window.setVisible(true);
     }
 }
