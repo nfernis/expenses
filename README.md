@@ -1,7 +1,22 @@
 ﻿# Expenses Tracker
 
 <!-- TREE START --><!-- TREE END -->
+```
+.
+├── .github
+│   └── workflows
+│       └── update-readme.yml
+├── .gitignore
+├── README.md
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           └── com
+│               └── example
+│                   └── expenses
+│                       └── Main.java
+└── tree.txt
 
-## О проекте
-
-Приложение для учета расходов на Java Swing + FlatLaf
+9 directories, 6 files
+```
