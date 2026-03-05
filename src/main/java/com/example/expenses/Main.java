@@ -1,5 +1,6 @@
 package com.example.expenses;
 import com.example.expenses.ui.MainWindow;
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.util.logging.*;
 
 public class Main {
@@ -22,7 +23,7 @@ public class Main {
 
         root.setLevel(Level.ALL); // обрабатываем все логги
         root.addHandler(handler); //подключаем обработчик к корневому логгеру
-
+        FlatDarkLaf.setup();
         //запуск окна
         MainWindow window = new MainWindow();
         window.setVisible(true);
