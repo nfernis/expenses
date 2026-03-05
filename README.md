@@ -16,6 +16,8 @@
 │       │       └── example
 │       │           └── expenses
 │       │               ├── Main.java
+│       │               ├── service
+│       │               │   └── DaysToSalary.java
 │       │               ├── ui
 │       │               │   └── MainWindow.java
 │       │               └── utils
@@ -26,5 +28,5 @@
 │               └── icon.png
 └── tree.txt
 
-13 directories, 10 files
+14 directories, 11 files
 ```
