@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 
 public class DaysToSalary {
-    private static final Logger LOGGER = Logger.getLogger(MainWindow.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DaysToSalary.class.getName());
 
     public long getDaysToSalary(){
         LocalDate nowDay = LocalDate.now();

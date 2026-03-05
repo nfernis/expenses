@@ -5,10 +5,8 @@ import java.net.URL;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import com.example.expenses.utils.CustomLevel;
-import com.example.expenses.utils.UIHelper;
+import static com.example.expenses.utils.UIHelper.*;
 
-import static com.example.expenses.utils.UIHelper.createLabel;
-import static com.example.expenses.utils.UIHelper.createTextField;
 import com.example.expenses.service.DaysToSalary;
 
 public class MainWindow extends JFrame {
