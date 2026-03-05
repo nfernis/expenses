@@ -9,6 +9,7 @@ import com.example.expenses.utils.UIHelper;
 
 import static com.example.expenses.utils.UIHelper.createLabel;
 import static com.example.expenses.utils.UIHelper.createTextField;
+import com.example.expenses.service.DaysToSalary;
 
 public class MainWindow extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(MainWindow.class.getName());
@@ -41,14 +42,14 @@ public class MainWindow extends JFrame {
 
                                 /*СКОЛЬКО ДНЕЙ ДО ЗП*/
 
-        JLabel daysToSalary = createLabel("Дней до зарплаты:" + 32);//TODO
-        daysToSalary.setBounds(50, 100, 1500, 25);
+        JLabel daysToSalary = createLabel("Дней до зарплаты: " + new DaysToSalary().getDaysToSalary());
+        daysToSalary.setBounds(50, 100, 300, 25);
         panel.add(daysToSalary);
 
                                  /*БЮДЖЕТ НА СЕГОДНЯ*/
 
         JLabel budgetLabel = createLabel("Бюджет на сегодня: " + 22 + "р.");//TODO
-        budgetLabel.setBounds(50, 170, 1500, 25);
+        budgetLabel.setBounds(50, 170, 300, 25);
         panel.add(budgetLabel);
 
 
