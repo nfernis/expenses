@@ -9,6 +9,7 @@ public class MainWindow extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(MainWindow.class.getName());
 
     public MainWindow() {
+        LOGGER.log(CustomLevel.TEST, "Тестовое сообщение");
         setTitle("Expenses Tracker");//заголовок
         setSize(800, 600);//размер окна
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//при нажатии на крестик приложение закрывается
@@ -23,6 +24,6 @@ public class MainWindow extends JFrame {
         }else{
             LOGGER.warning("iconURL is null or an unexpected error occurred");
         }
-        LOGGER.log(CustomLevel.TEST, "Тестовое сообщение");
+
     }
 }
