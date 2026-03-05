@@ -17,6 +17,7 @@
 │       │           └── expenses
 │       │               ├── Main.java
 │       │               ├── service
+│       │               │   ├── BudgetForToday.java
 │       │               │   └── DaysToSalary.java
 │       │               ├── ui
 │       │               │   └── MainWindow.java
@@ -28,5 +29,5 @@
 │               └── icon.png
 └── tree.txt
 
-14 directories, 11 files
+14 directories, 12 files
 ```
