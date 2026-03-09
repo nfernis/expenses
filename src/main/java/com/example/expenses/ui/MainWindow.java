@@ -1,10 +1,15 @@
 package com.example.expenses.ui;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.net.URL;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import com.example.expenses.utils.CustomLevel;
+
+import static com.example.expenses.service.BudgetForToday.budgetForToday;
 import static com.example.expenses.utils.UIHelper.*;
 
 import com.example.expenses.service.DaysToSalary;
@@ -38,6 +43,8 @@ public class MainWindow extends JFrame {
         balanceText.setBounds(160, 30, 150, 25);
         panel.add(balanceText);
 
+
+
                                 /*СКОЛЬКО ДНЕЙ ДО ЗП*/
 
         JLabel daysToSalary = createLabel("Дней до зарплаты: " + new DaysToSalary().getDaysToSalary());
@@ -46,31 +53,26 @@ public class MainWindow extends JFrame {
 
                                  /*БЮДЖЕТ НА СЕГОДНЯ*/
 
-        JLabel budgetLabel = createLabel("Бюджет на сегодня: " + 22 + "р.");//TODO
+        JLabel budgetLabel = createLabel("Бюджет на сегодня: " + "р.");//TODO
         budgetLabel.setBounds(50, 170, 300, 25);
         panel.add(budgetLabel);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //Слушатель текста
+        balanceText.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String text = balanceText.getText().trim();//получаем значение, убираем пробелы
+                    if (text.isEmpty()) {
+                        budgetLabel.setText("Бюджет на сегодня: — р."); //если пустое поле
+                        return;
+                    }
+                    budgetLabel.setText("Бюджет на сегодня: " + String.format(budgetForToday(text) + " р.")); //если не пустое
+                } catch (NumberFormatException ex) {
+                    budgetLabel.setText("Бюджет на сегодня: ошибка!");
+                }
+            }
+        });
 
 
 
@@ -87,4 +89,5 @@ public class MainWindow extends JFrame {
         }
 
     }
+
 }
