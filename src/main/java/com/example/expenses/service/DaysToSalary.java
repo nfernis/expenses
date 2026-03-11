@@ -14,7 +14,6 @@ public class DaysToSalary {
     public long getDaysToSalary(){
         LocalDate nowDay = LocalDate.now();
         LOGGER.log(CustomLevel.TEST, "Дата сегодня " + nowDay);
-        LOGGER.log(CustomLevel.TEST, "Число  " + nowDay.getDayOfMonth());
         LocalDate salaryDay;
 
                                         /*РАСЧЕТ ДАТЫ ЗАРПЛАТЫ*/
