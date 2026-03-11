@@ -13,6 +13,7 @@ import com.example.expenses.utils.CustomLevel;
 
 import static com.example.expenses.service.BudgetForToday.budgetForToday;
 import static com.example.expenses.utils.UIHelper.*;
+import static com.example.expenses.utils.UIHelper.createLabel;
 
 import com.example.expenses.service.DaysToSalary;
 import com.example.expenses.utils.UIHelper;
@@ -56,7 +57,6 @@ public class MainWindow extends JFrame {
         balanceText.addActionListener(new BalanceFieldListener(balanceText, budgetLabel));
 
 
-
         /*СКОЛЬКО ДНЕЙ ДО ЗП*/
 
         JLabel daysToSalary = createLabel("Дней до зарплаты: " + new DaysToSalary().getDaysToSalary());
@@ -64,6 +64,15 @@ public class MainWindow extends JFrame {
         panel.add(daysToSalary);
 
 
+
+        /*ЧЕК-БОКСЫ ОПЛАЧЕНО ЛИ ЧТО-ТО*/
+
+        JLabel checkBox = createLabel("Отметь то, что ты уже платила:");
+        checkBox.setBounds(450, 30, 300, 25);
+        panel.add(checkBox);
+
+
+        //JLabel homeLabel = ;
 
 
 

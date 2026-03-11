@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class BudgetForToday {
     private static final Logger LOGGER = Logger.getLogger(BudgetForToday.class.getName());
-    //TODO
+    //TODO среднее значение коммуналки пока будет 3500
     public static float budgetForToday(float budget){
 
 
