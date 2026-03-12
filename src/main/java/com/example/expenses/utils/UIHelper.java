@@ -22,5 +22,11 @@ public class UIHelper {
         return field;
     }
 
+    public static JCheckBox createCheckBox(String text){
+        JCheckBox checkBox = new JCheckBox(text);
+        checkBox.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        return checkBox;
+    }
+
 
 }

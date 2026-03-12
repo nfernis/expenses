@@ -25,7 +25,7 @@ public class MainWindow extends JFrame {
 
     public MainWindow() {
         //LOGGER.log(CustomLevel.TEST, "Тестовое сообщение");
-        /*САМО ОКНО*/
+                                        /*САМО ОКНО*/
         setTitle("Expenses Tracker");//заголовок
         setSize(800, 600);//размер окна
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//при нажатии на крестик приложение закрывается
@@ -33,14 +33,14 @@ public class MainWindow extends JFrame {
         setLayout(null);
 
 
-        /*СОЗДАЕМ ПАНЕЛЬ*/
+                                        /*СОЗДАЕМ ПАНЕЛЬ*/
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBounds(0, 0, 800, 600);
         add(panel);
 
 
-        /*БАЛАНС*/
+                                            /*БАЛАНС*/
         JLabel balanceLabel = createLabel("Баланс:");
         balanceLabel.setBounds(50, 30, 150, 25);
         panel.add(balanceLabel);
@@ -50,7 +50,7 @@ public class MainWindow extends JFrame {
         panel.add(balanceText);
 
 
-        /*БЮДЖЕТ НА СЕГОДНЯ*/
+                                        /*БЮДЖЕТ НА СЕГОДНЯ*/
         JLabel budgetLabel = null;
         budgetLabel = UIHelper.createLabel("Бюджет на сегодня: " + "р.");
         budgetLabel.setBounds(50, 170, 300, 25);
@@ -59,29 +59,50 @@ public class MainWindow extends JFrame {
         balanceText.addActionListener(new BalanceFieldListener(balanceText, budgetLabel));
 
 
-        /*СКОЛЬКО ДНЕЙ ДО ЗП*/
-
+                                        /*СКОЛЬКО ДНЕЙ ДО ЗП*/
         JLabel daysToSalary = createLabel("Дней до зарплаты: " + new DaysToSalary().getDaysToSalary());
         daysToSalary.setBounds(50, 100, 300, 25);
         panel.add(daysToSalary);
 
 
 
-        /*ЧЕК-БОКСЫ ОПЛАЧЕНО ЛИ ЧТО-ТО*/
+                                        /*ЧЕК-БОКСЫ ОПЛАЧЕНО ЛИ ЧТО-ТО*/
 
-        JLabel checkBox = createLabel("Отметь то, что ты уже платила:");
+        JLabel checkBox = createLabel("Отметь то, что ты уже оплатила:");
         checkBox.setBounds(450, 30, 300, 25);
         panel.add(checkBox);
 
-
-        //JLabel homeLabel = ;
-
-
-
-
+                                                /*АРЕНДА КВАРТИРЫ*/
+        JCheckBox homeLabel = createCheckBox("Аренда");
+        homeLabel.setBounds(450, 100, 150, 25);
+        panel.add(homeLabel);
 
 
-        /*ИКОНКА*/
+
+        JCheckBox communalLabel = createCheckBox("ЖКХ");
+        communalLabel.setBounds(450, 170, 150, 25);
+        panel.add(communalLabel);
+
+
+        JCheckBox debtLabel = createCheckBox("Долг");
+        debtLabel.setBounds(450, 240, 150, 25);
+        panel.add(debtLabel);
+
+
+        JCheckBox musicLabel = createCheckBox("Я.Музыка");
+        musicLabel.setBounds(450, 310, 150, 25);
+        panel.add(musicLabel);
+
+        JCheckBox internetLabel = createCheckBox("Интернет");
+        internetLabel.setBounds(450, 380, 150, 25);
+        panel.add(internetLabel);
+
+
+
+
+
+
+                                                    /*ИКОНКА*/
         URL iconURL = getClass().getClassLoader().getResource("icons/icon.png");//достаем путь в иконке
         LOGGER.info(String.valueOf(iconURL));
         if (iconURL != null) {
