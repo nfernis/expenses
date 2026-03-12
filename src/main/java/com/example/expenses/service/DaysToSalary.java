@@ -1,3 +1,5 @@
+/*Класс отвечает за определение дня выплат и количества дней до зарплаты*/
+
 package com.example.expenses.service;
 
 import com.example.expenses.ui.MainWindow;

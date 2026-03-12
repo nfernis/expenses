@@ -1,3 +1,6 @@
+/*Главная функция по расчету бюджета на сегодня*/
+
+
 package com.example.expenses.service;
 
 

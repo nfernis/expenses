@@ -1,3 +1,5 @@
+/*Класс для создания меток и полей для ввода текста. Отвечает за создание и форматирование*/
+
 package com.example.expenses.utils;
 
 import javax.swing.*;

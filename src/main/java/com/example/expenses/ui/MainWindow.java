@@ -1,3 +1,5 @@
+/*Интерфейс главного и начального экрана. Отвечает только за интерфейс, расположение элементов*/
+
 package com.example.expenses.ui;
 import javax.swing.*;
 import java.awt.*;

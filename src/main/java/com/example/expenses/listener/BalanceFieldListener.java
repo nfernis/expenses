@@ -1,3 +1,6 @@
+/*Слушает поле Баланс и вызывает функцию budgetForToday, а после записывает результат в Бюджет на сегодня*/
+
+
 package com.example.expenses.listener;
 
 import java.awt.event.ActionListener;

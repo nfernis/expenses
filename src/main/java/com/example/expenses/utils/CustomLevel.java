@@ -1,3 +1,5 @@
+/*Создание нового уровня логирования TEST*/
+
 package com.example.expenses.utils;
 
 import java.util.logging.Level;
