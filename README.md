@@ -17,6 +17,9 @@
 │       │       └── example
 │       │           └── expenses
 │       │               ├── Main.java
+│       │               ├── db
+│       │               │   ├── DBConnection.java
+│       │               │   └── TestDB.java
 │       │               ├── listener
 │       │               │   └── BalanceFieldListener.java
 │       │               ├── service
@@ -32,5 +35,5 @@
 │               └── icon.png
 └── tree.txt
 
-15 directories, 14 files
+16 directories, 16 files
 ```
