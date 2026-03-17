@@ -2,10 +2,16 @@
 
 package com.example.expenses.utils;
 
+import com.example.expenses.ui.MainWindow;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Logger;
+
+import static javax.swing.UIManager.getInsets;
 
 public class UIHelper {
+    private static final Logger LOGGER = Logger.getLogger(MainWindow.class.getName());
     private static final Font DEFAULT_LABEL_FONT = new Font("Segoe UI", Font.BOLD, 14);
     //private static final Font TITLE_FONT = new Font("Segoe UI", Font.BOLD, 20); — если нужен будет заголовок
 
@@ -27,6 +33,34 @@ public class UIHelper {
         checkBox.setFont(new Font("Segoe UI", Font.BOLD, 14));
         return checkBox;
     }
+
+    public static JButton createButton(String text){
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        return button;
+    }
+
+
+
+    public static void scaleForShowButton(JPanel panel, JButton button){
+        SwingUtilities.invokeLater(() -> {
+            int panelWidth = panel.getWidth();
+            LOGGER.log(CustomLevel.TEST, String.valueOf(panelWidth));
+            int panelHeight = panel.getHeight();
+            LOGGER.log(CustomLevel.TEST, String.valueOf(panelHeight));
+            int buttonWidth = 20;
+            int buttonX = panelWidth - buttonWidth; // прижимаем к правому краю панели
+            LOGGER.log(CustomLevel.TEST, String.valueOf(buttonX));
+            int buttonY = 0; // сверху панели
+            int buttonHeight = panelHeight; // на всю высоту панели
+            LOGGER.log(CustomLevel.TEST, String.valueOf(buttonHeight));
+
+            button.setBounds(buttonX, buttonY, buttonWidth, buttonHeight);
+
+        });
+    }
+
+
 
 
 }

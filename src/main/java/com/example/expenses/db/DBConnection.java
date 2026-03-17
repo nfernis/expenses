@@ -1,3 +1,9 @@
+/*Класс для создания соединения с БД.
+Методы:
+getConnection() - открыть соединение
+closeConnection() - прервать соединение
+isConnected() - проверить состояние соединения
+*/
 package com.example.expenses.db;
 import java.sql.*;
 import java.util.logging.Logger;

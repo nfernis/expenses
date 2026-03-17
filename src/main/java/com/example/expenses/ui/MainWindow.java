@@ -27,34 +27,69 @@ public class MainWindow extends JFrame {
         //LOGGER.log(CustomLevel.TEST, "Тестовое сообщение");
                                         /*САМО ОКНО*/
         setTitle("Expenses Tracker");//заголовок
-        setSize(800, 600);//размер окна
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//при нажатии на крестик приложение закрывается
         setLocationRelativeTo(null);//открыть по центру экрана
         setLayout(null);
+        setSize(400, 500);
+
+        /*СОЗДАЕМ ПАНЕЛЬ*/
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(null);
+        Insets insets = getInsets();
+        leftPanel.setBounds(0, insets.top, getWidth(), getHeight() - insets.top);
+        add(leftPanel);
+        setSize(leftPanel.getWidth(), leftPanel.getHeight());
+
+                                        /*КНОПКА РАСХОДЫ*/
+        /*JButton showButton = createButton(".");
+        leftPanel.add(showButton);
+        scaleForShowButton(leftPanel, showButton);//масштабирование около правого края фрейма
+
+        showButton.addActionListener(e -> {
+
+            JPanel rightPanel = new JPanel();
+            rightPanel.setLayout(null);
+            rightPanel.setBounds(400, 0, 300, 500);
+            add(rightPanel);
+            rightPanel.setVisible(true);  // показываем правую часть
+            leftPanel.repaint();
 
 
-                                        /*СОЗДАЕМ ПАНЕЛЬ*/
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        panel.setBounds(0, 0, 800, 600);
-        add(panel);
+                                            /*РАСХОДЫ*//*
+            String[] types = {"Аренда", "ЖКХ", "Долг", "Я.Музыка", "Интернет"};
+            JTextField[] fields = new JTextField[types.length];
 
+            for (int i = 0; i < types.length; i++) { //Добавляет каждый элемент списка
+
+                JLabel label = createLabel(types[i] + ":");
+                label.setBounds(30, 30 + i * 70, 80, 25);
+                rightPanel.add(label);
+
+                fields[i] = createTextField();
+                fields[i].setBounds(110, 30 + i * 70, 150, 25);
+                rightPanel.add(fields[i]);
+            }
+        });
+
+*/
+        leftPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
 
                                             /*БАЛАНС*/
         JLabel balanceLabel = createLabel("Баланс:");
         balanceLabel.setBounds(50, 30, 150, 25);
-        panel.add(balanceLabel);
+        leftPanel.add(balanceLabel);
 
         JTextField balanceText = createTextField();
         balanceText.setBounds(160, 30, 150, 25);
-        panel.add(balanceText);
+        leftPanel.add(balanceText);
 
 
                                         /*БЮДЖЕТ НА СЕГОДНЯ*/
         JLabel budgetLabel = null;
         budgetLabel = UIHelper.createLabel("Бюджет на сегодня: " + "р.");
         budgetLabel.setBounds(50, 170, 300, 25);
-        panel.add(budgetLabel);
+        leftPanel.add(budgetLabel);
 
         balanceText.addActionListener(new BalanceFieldListener(balanceText, budgetLabel));
 
@@ -62,40 +97,11 @@ public class MainWindow extends JFrame {
                                         /*СКОЛЬКО ДНЕЙ ДО ЗП*/
         JLabel daysToSalary = createLabel("Дней до зарплаты: " + new DaysToSalary().getDaysToSalary());
         daysToSalary.setBounds(50, 100, 300, 25);
-        panel.add(daysToSalary);
+        leftPanel.add(daysToSalary);
 
 
 
-                                        /*ЧЕК-БОКСЫ ОПЛАЧЕНО ЛИ ЧТО-ТО*/
 
-        JLabel checkBox = createLabel("Отметь то, что ты уже оплатила:");
-        checkBox.setBounds(450, 30, 300, 25);
-        panel.add(checkBox);
-
-                                                /*АРЕНДА КВАРТИРЫ*/
-        JCheckBox homeLabel = createCheckBox("Аренда");
-        homeLabel.setBounds(450, 100, 150, 25);
-        panel.add(homeLabel);
-
-
-
-        JCheckBox communalLabel = createCheckBox("ЖКХ");
-        communalLabel.setBounds(450, 170, 150, 25);
-        panel.add(communalLabel);
-
-
-        JCheckBox debtLabel = createCheckBox("Долг");
-        debtLabel.setBounds(450, 240, 150, 25);
-        panel.add(debtLabel);
-
-
-        JCheckBox musicLabel = createCheckBox("Я.Музыка");
-        musicLabel.setBounds(450, 310, 150, 25);
-        panel.add(musicLabel);
-
-        JCheckBox internetLabel = createCheckBox("Интернет");
-        internetLabel.setBounds(450, 380, 150, 25);
-        panel.add(internetLabel);
 
 
 
@@ -112,6 +118,7 @@ public class MainWindow extends JFrame {
         } else {
             LOGGER.warning("iconURL is null or an unexpected error occurred");
         }
+
 
     }
 
