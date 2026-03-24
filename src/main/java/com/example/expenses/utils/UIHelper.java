@@ -42,18 +42,16 @@ public class UIHelper {
 
 
 
+
+
     public static void scaleForShowButton(JPanel panel, JButton button){
         SwingUtilities.invokeLater(() -> {
             int panelWidth = panel.getWidth();
-            LOGGER.log(CustomLevel.TEST, String.valueOf(panelWidth));
             int panelHeight = panel.getHeight();
-            LOGGER.log(CustomLevel.TEST, String.valueOf(panelHeight));
-            int buttonWidth = 20;
+            int buttonWidth = 30;
             int buttonX = panelWidth - buttonWidth; // прижимаем к правому краю панели
-            LOGGER.log(CustomLevel.TEST, String.valueOf(buttonX));
             int buttonY = 0; // сверху панели
             int buttonHeight = panelHeight; // на всю высоту панели
-            LOGGER.log(CustomLevel.TEST, String.valueOf(buttonHeight));
 
             button.setBounds(buttonX, buttonY, buttonWidth, buttonHeight);
 
@@ -64,3 +62,5 @@ public class UIHelper {
 
 
 }
+
+

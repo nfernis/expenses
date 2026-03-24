@@ -3,17 +3,13 @@
 package com.example.expenses.ui;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import java.net.URL;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 import com.example.expenses.listener.BalanceFieldListener;
-import com.example.expenses.utils.CustomLevel;
 
-import static com.example.expenses.service.BudgetForToday.budgetForToday;
+import static com.example.expenses.ui.showButton.listener;
 import static com.example.expenses.utils.UIHelper.*;
 import static com.example.expenses.utils.UIHelper.createLabel;
 
@@ -32,48 +28,38 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);//открыть по центру экрана
         setLayout(null);
         setSize(400, 500);
+        setResizable(false);
 
-        /*СОЗДАЕМ ПАНЕЛЬ*/
+        /*СОЗДАЕМ ПАНЕЛИ*/
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(null);
-        Insets insets = getInsets();
-        leftPanel.setBounds(0, insets.top, getWidth(), getHeight() - insets.top);
+        leftPanel.setBounds(0, 0, 380, 460);
         add(leftPanel);
-        setSize(leftPanel.getWidth(), leftPanel.getHeight());
+
+        JPanel rightPanel = new JPanel();
+        rightPanel.setLayout(null);
+        rightPanel.setBounds(400, 0, 300, 460);
+
+
 
                                         /*КНОПКА РАСХОДЫ*/
-        /*JButton showButton = createButton(".");
+        JButton showButton = createButton("»");
+        showButton.setContentAreaFilled(false);   // не заливать фон
+
+        showButton.putClientProperty("JButton.buttonType", "borderless");
+
         leftPanel.add(showButton);
         scaleForShowButton(leftPanel, showButton);//масштабирование около правого края фрейма
-
-        showButton.addActionListener(e -> {
-
-            JPanel rightPanel = new JPanel();
-            rightPanel.setLayout(null);
-            rightPanel.setBounds(400, 0, 300, 500);
-            add(rightPanel);
-            rightPanel.setVisible(true);  // показываем правую часть
-            leftPanel.repaint();
+        listener(showButton, this, leftPanel, rightPanel);
 
 
-                                            /*РАСХОДЫ*//*
-            String[] types = {"Аренда", "ЖКХ", "Долг", "Я.Музыка", "Интернет"};
-            JTextField[] fields = new JTextField[types.length];
 
-            for (int i = 0; i < types.length; i++) { //Добавляет каждый элемент списка
 
-                JLabel label = createLabel(types[i] + ":");
-                label.setBounds(30, 30 + i * 70, 80, 25);
-                rightPanel.add(label);
 
-                fields[i] = createTextField();
-                fields[i].setBounds(110, 30 + i * 70, 150, 25);
-                rightPanel.add(fields[i]);
-            }
-        });
 
-*/
-        leftPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
+
+
+
 
                                             /*БАЛАНС*/
         JLabel balanceLabel = createLabel("Баланс:");
@@ -93,11 +79,18 @@ public class MainWindow extends JFrame {
 
         balanceText.addActionListener(new BalanceFieldListener(balanceText, budgetLabel));
 
+        JButton calculateButton = createButton("Рассчитать");
+        //calculateButton.setContentAreaFilled(false);
+        calculateButton.putClientProperty("JButton.buttonType", "borderless");
+        calculateButton.setBounds(50, budgetLabel.getY() + 70, 130, 25);
+        leftPanel.add(calculateButton);
+
 
                                         /*СКОЛЬКО ДНЕЙ ДО ЗП*/
         JLabel daysToSalary = createLabel("Дней до зарплаты: " + new DaysToSalary().getDaysToSalary());
         daysToSalary.setBounds(50, 100, 300, 25);
         leftPanel.add(daysToSalary);
+
 
 
 

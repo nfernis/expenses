@@ -14,9 +14,8 @@ public class BudgetForToday {
     private static final Logger LOGGER = Logger.getLogger(BudgetForToday.class.getName());
     //TODO среднее значение коммуналки пока будет 3500
     public static float budgetForToday(float budget){
-
-
-        return 0;
+        float total = budget / new DaysToSalary().getDaysToSalary();
+        return total;
     }
 
 }
