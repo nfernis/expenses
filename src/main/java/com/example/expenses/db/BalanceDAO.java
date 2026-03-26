@@ -4,11 +4,12 @@ package com.example.expenses.db;
 import com.example.expenses.ui.MainWindow;
 import com.example.expenses.utils.CustomLevel;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.sql.*;
 import java.util.logging.Logger;
+
+import static java.lang.Math.round;
 
 
 public class BalanceDAO {
@@ -41,5 +42,23 @@ public class BalanceDAO {
 
     }
 
+    public static void updateBalance(float balance) throws SQLException {
+        String query ="insert into balances(balance)\n" +
+                "values (?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            LOGGER.log(CustomLevel.TEST, "Подлючились к supabase из updateBalance()");
+
+            BigDecimal bd = new BigDecimal(balance).setScale(2, RoundingMode.HALF_UP);//хуйня для округления
+            ps.setBigDecimal(1, bd);
+
+            ps.executeUpdate();
+            LOGGER.log(CustomLevel.TEST, "updateBalance() отработал");
+
+        } catch (Exception e) {
+            LOGGER.severe("Не удалось подключиться к supabase из updateBalance()");
+            throw new SQLException(e);
+        }
+    }
 
 }
