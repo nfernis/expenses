@@ -22,15 +22,11 @@
 │       │               │   ├── DBConnection.java
 │       │               │   ├── PaymentDAO.java
 │       │               │   └── TestDB.java
-│       │               ├── listener
-│       │               │   └── BalanceFieldListener.java
 │       │               ├── service
 │       │               │   ├── BudgetCalculator.java
-│       │               │   ├── BudgetForToday.java
 │       │               │   └── DaysToSalary.java
 │       │               ├── ui
 │       │               │   ├── MainWindow.java
-│       │               │   ├── calculateButton.java
 │       │               │   └── showButton.java
 │       │               └── utils
 │       │                   ├── CustomLevel.java
@@ -40,5 +36,5 @@
 │               └── icon.png
 └── tree.txt
 
-16 directories, 21 files
+15 directories, 18 files
 ```
