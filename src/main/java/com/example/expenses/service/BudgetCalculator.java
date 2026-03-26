@@ -6,6 +6,8 @@ import javax.swing.*;
 
 public class BudgetCalculator {
 
+
+
     // Метод для кнопки "Рассчитать" (название и сигнатура не меняются)
     public static void listenerCalculate(JButton calculateButton, JTextField budget, JLabel budgetLabel) {
         calculateButton.addActionListener(e -> {
@@ -21,7 +23,7 @@ public class BudgetCalculator {
     }
 
     // Общая приватная логика расчета (вместо BudgetForToday)
-    private static void calculateBudget(JTextField budgetField, JLabel budgetLabel) {
+    public static void calculateBudget(JTextField budgetField, JLabel budgetLabel) {
         try {
             String text = budgetField.getText().trim();
             if (text.isEmpty()) {

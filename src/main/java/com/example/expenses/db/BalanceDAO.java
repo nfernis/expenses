@@ -21,7 +21,7 @@ public class BalanceDAO {
     }
 
     /*получить актуальный баланс на сегодня, который уже был записан в бд*/
-    public static float getBalance() throws SQLException {//TODO void заменить на float
+    public static float getBalance() throws SQLException {
         String query = "SELECT balance FROM balances \n" +
                 "ORDER BY created_at DESC \n" +
                 "LIMIT 1;";
@@ -40,4 +40,6 @@ public class BalanceDAO {
         return 0f;
 
     }
+
+
 }

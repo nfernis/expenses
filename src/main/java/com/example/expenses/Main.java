@@ -1,10 +1,12 @@
 package com.example.expenses;
 import com.example.expenses.ui.MainWindow;
 import com.formdev.flatlaf.FlatDarkLaf;
+
+import java.sql.SQLException;
 import java.util.logging.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Logger root = Logger.getLogger(""); //корневой логгер
         ConsoleHandler handler = new ConsoleHandler(); //создаем обработчик логгеров
         for (Handler h : root.getHandlers()) {

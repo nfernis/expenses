@@ -4,8 +4,11 @@ package com.example.expenses.ui;
 import javax.swing.*;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
+import static com.example.expenses.db.BalanceDAO.getBalance;
+import static com.example.expenses.service.BudgetCalculator.calculateBudget;
 import static com.example.expenses.ui.showButton.listener;
 import static com.example.expenses.utils.UIHelper.*;
 import static com.example.expenses.utils.UIHelper.createLabel;
@@ -17,7 +20,7 @@ import com.example.expenses.utils.UIHelper;
 public class MainWindow extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(MainWindow.class.getName());
 
-    public MainWindow() {
+    public MainWindow() throws SQLException {
         //LOGGER.log(CustomLevel.TEST, "Тестовое сообщение");
                                         /*САМО ОКНО*/
         setTitle("Expenses Tracker");//заголовок
@@ -66,6 +69,7 @@ public class MainWindow extends JFrame {
 
         JTextField balanceText = createTextField();
         balanceText.setBounds(160, 30, 150, 25);
+        balanceText.setText(String.valueOf(getBalance()));
         leftPanel.add(balanceText);
 
 
@@ -74,9 +78,10 @@ public class MainWindow extends JFrame {
         budgetLabel = UIHelper.createLabel("Бюджет на сегодня: " + "р.");
         budgetLabel.setBounds(50, 170, 300, 25);
         leftPanel.add(budgetLabel);
+        calculateBudget(balanceText, budgetLabel);//насильно вызываем метод для значения баланса по умолчанию
 
 
-        BudgetCalculator.listenerBalanceField(balanceText, budgetLabel);
+        BudgetCalculator.listenerBalanceField(balanceText, budgetLabel);//а тут уже слушаем энтер или кнопку Рассчитать
 
         JButton calculateButton = createButton("Рассчитать");
         //calculateButton.setContentAreaFilled(false);
