@@ -6,7 +6,7 @@ public class TestDB {
     public static void main(String[] args) throws SQLException {
         var conn = DBConnection.getConnection();
         if (conn != null) {
-            System.out.println("Ура! Подключение работает!");
+            BalanceDAO.getBalance();
 
             DBConnection.closeConnection();
 

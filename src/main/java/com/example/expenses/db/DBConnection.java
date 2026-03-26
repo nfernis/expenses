@@ -5,6 +5,8 @@ closeConnection() - прервать соединение
 isConnected() - проверить состояние соединения
 */
 package com.example.expenses.db;
+import com.example.expenses.utils.CustomLevel;
+
 import java.sql.*;
 import java.util.logging.Logger;
 
@@ -23,9 +25,9 @@ public class DBConnection {
             try {
                 Class.forName("org.postgresql.Driver");
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                LOGGER.info("Подключение к БД установлено");
+                LOGGER.log(CustomLevel.TEST,"Подключение к БД установлено");
             } catch (ClassNotFoundException e) {
-                LOGGER.severe("Драйвер не найден: " + e.getMessage());
+                LOGGER.log(CustomLevel.TEST,"Драйвер не найден: " + e.getMessage());
                 throw new SQLException("Драйвер PostgreSQL отсутствует", e);
             }
         }
@@ -37,7 +39,7 @@ public class DBConnection {
         if (connection != null) {
             try {
                 connection.close();
-                LOGGER.info("Соединение закрыто");
+                LOGGER.log(CustomLevel.TEST,"Соединение закрыто");
             } catch (SQLException e) {
                 LOGGER.warning("Ошибка при закрытии: " + e.getMessage());
             }
