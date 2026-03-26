@@ -13,6 +13,7 @@ import static com.example.expenses.ui.showButton.listener;
 import static com.example.expenses.utils.UIHelper.*;
 import static com.example.expenses.utils.UIHelper.createLabel;
 
+import com.example.expenses.service.BudgetCalculator;
 import com.example.expenses.service.DaysToSalary;
 import com.example.expenses.utils.UIHelper;
 
@@ -77,6 +78,7 @@ public class MainWindow extends JFrame {
         budgetLabel.setBounds(50, 170, 300, 25);
         leftPanel.add(budgetLabel);
 
+
         balanceText.addActionListener(new BalanceFieldListener(balanceText, budgetLabel));
 
         JButton calculateButton = createButton("Рассчитать");
@@ -84,6 +86,7 @@ public class MainWindow extends JFrame {
         calculateButton.putClientProperty("JButton.buttonType", "borderless");
         calculateButton.setBounds(50, budgetLabel.getY() + 70, 130, 25);
         leftPanel.add(calculateButton);
+        BudgetCalculator.listenerCalculate(calculateButton, balanceText, budgetLabel);
 
 
                                         /*СКОЛЬКО ДНЕЙ ДО ЗП*/

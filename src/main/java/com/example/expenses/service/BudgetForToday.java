@@ -15,6 +15,7 @@ public class BudgetForToday {
     //TODO среднее значение коммуналки пока будет 3500
     public static float budgetForToday(float budget){
         float total = budget / new DaysToSalary().getDaysToSalary();
+
         return total;
     }
 

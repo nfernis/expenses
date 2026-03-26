@@ -7,7 +7,9 @@ public class TestDB {
         var conn = DBConnection.getConnection();
         if (conn != null) {
             System.out.println("Ура! Подключение работает!");
+
             DBConnection.closeConnection();
+
         } else {
             System.out.println("Не удалось подключиться");
         }
