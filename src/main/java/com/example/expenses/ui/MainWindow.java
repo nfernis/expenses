@@ -2,12 +2,9 @@
 
 package com.example.expenses.ui;
 import javax.swing.*;
-import java.awt.*;
 
 import java.net.URL;
 import java.util.logging.Logger;
-
-import com.example.expenses.listener.BalanceFieldListener;
 
 import static com.example.expenses.ui.showButton.listener;
 import static com.example.expenses.utils.UIHelper.*;
@@ -79,7 +76,7 @@ public class MainWindow extends JFrame {
         leftPanel.add(budgetLabel);
 
 
-        balanceText.addActionListener(new BalanceFieldListener(balanceText, budgetLabel));
+        BudgetCalculator.listenerBalanceField(balanceText, budgetLabel);
 
         JButton calculateButton = createButton("Рассчитать");
         //calculateButton.setContentAreaFilled(false);
