@@ -14,12 +14,9 @@ import static java.lang.Math.round;
 
 public class BalanceDAO {
     private static final Logger LOGGER = Logger.getLogger(BalanceDAO.class.getName());
-    private final Connection connection;
 
     // Конструктор принимает уже готовое подключение
-    public BalanceDAO(Connection connection) {
-        this.connection = connection;
-    }
+
 
     /*получить актуальный баланс на сегодня, который уже был записан в бд*/
     public static float getBalance() throws SQLException {
@@ -41,24 +38,31 @@ public class BalanceDAO {
         return 0f;
 
     }
-
+    /*записать актуальный баланс на сегодня в бд*/
     public static void updateBalance(float balance) throws SQLException {
         String query ="insert into balances(balance)\n" +
                 "values (?)";
+        Float getBalance = getBalance();
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
             LOGGER.log(CustomLevel.TEST, "Подлючились к supabase из updateBalance()");
 
+
             BigDecimal bd = new BigDecimal(balance).setScale(2, RoundingMode.HALF_UP);//хуйня для округления
             ps.setBigDecimal(1, bd);
-
-            ps.executeUpdate();
-            LOGGER.log(CustomLevel.TEST, "updateBalance() отработал");
+            if(getBalance != null && Math.abs(getBalance - balance) > 0.01f) {
+                ps.executeUpdate();
+                LOGGER.log(CustomLevel.TEST, "updateBalance() отработал");
+            }else{
+                LOGGER.log(CustomLevel.TEST, "Введенный баланс = " + balance + "\nПоследняя запись в БД = " + getBalance() + "\nОбнаружен дубликат!");
+            }
 
         } catch (Exception e) {
             LOGGER.severe("Не удалось подключиться к supabase из updateBalance()");
             throw new SQLException(e);
         }
     }
+
+    /**/
 
 }
