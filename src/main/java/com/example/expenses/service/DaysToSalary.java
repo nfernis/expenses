@@ -15,20 +15,16 @@ public class DaysToSalary {
 
     public long getDaysToSalary(){
         LocalDate nowDay = LocalDate.now();
-        LOGGER.log(CustomLevel.TEST, "Дата сегодня " + nowDay);
         LocalDate salaryDay;
 
                                         /*РАСЧЕТ ДАТЫ ЗАРПЛАТЫ*/
         if (nowDay.getDayOfMonth() < 10){ //1-9
             salaryDay = LocalDate.of(nowDay.getYear(), nowDay.getMonthValue(), 10);
-            LOGGER.log(CustomLevel.TEST, "День зп if " + salaryDay);
         } else if (nowDay.getDayOfMonth() >= 25) {//25-
             salaryDay = LocalDate.of(nowDay.getYear(), nowDay.getMonthValue(), 10)
                     .plusMonths(1);
-            LOGGER.log(CustomLevel.TEST, "День зп else if " + salaryDay);
         }else{//10-24
             salaryDay = LocalDate.of(nowDay.getYear(), nowDay.getMonthValue(), 25);
-            LOGGER.log(CustomLevel.TEST, "День зп else " + salaryDay);
         }
 
                                         /*СКОЛЬКО ДНЕЙ ДО ЗАРПЛАТЫ*/

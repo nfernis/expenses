@@ -8,7 +8,6 @@ public class TestDB {
         if (conn != null) {
             BalanceDAO.getBalance();
 
-            DBConnection.closeConnection();
 
         } else {
             System.out.println("Не удалось подключиться");

@@ -3,6 +3,7 @@
 package com.example.expenses.ui;
 import javax.swing.*;
 
+import java.awt.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import static com.example.expenses.ui.showButton.listener;
 import static com.example.expenses.utils.UIHelper.*;
 import static com.example.expenses.utils.UIHelper.createLabel;
 
+import com.example.expenses.db.DBConnection;
 import com.example.expenses.service.BudgetCalculator;
 import com.example.expenses.service.DaysToSalary;
 import com.example.expenses.utils.UIHelper;
@@ -21,6 +23,7 @@ public class MainWindow extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(MainWindow.class.getName());
 
     public MainWindow() throws SQLException {
+        DBConnection.initPool();
         //LOGGER.log(CustomLevel.TEST, "Тестовое сообщение");
                                         /*САМО ОКНО*/
         setTitle("Expenses Tracker");//заголовок
@@ -36,10 +39,12 @@ public class MainWindow extends JFrame {
         leftPanel.setLayout(null);
         leftPanel.setBounds(0, 0, 380, 460);
         add(leftPanel);
+        leftPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
 
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
-        rightPanel.setBounds(400, 0, 300, 460);
+        rightPanel.setBounds(400, 0, 400, 460);
+        rightPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
 
 
 

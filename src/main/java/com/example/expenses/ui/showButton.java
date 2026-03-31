@@ -31,6 +31,7 @@ public class showButton {
                         /*РАСХОДЫ*/
                         String[] types = {"Аренда", "ЖКХ", "Долг", "Я.Музыка", "Интернет"};
                         JTextField[] fields = new JTextField[types.length];
+                        JCheckBox[] checkBoxes = new JCheckBox[types.length];
 
                         for (int i = 0; i < types.length; i++) { //Добавляет каждый элемент списка
 
@@ -41,6 +42,11 @@ public class showButton {
                             fields[i] = createTextField();
                             fields[i].setBounds(110, 30 + i * 70, 150, 25);
                             rightPanel.add(fields[i]);
+
+                            checkBoxes[i] = createCheckBox("Оплачено");
+                            checkBoxes[i].setBounds(270, 30 + i * 70, 150, 25);
+                            rightPanel.add(checkBoxes[i]);
+
                         }
                     }else{
                         isOpen[0] = false;
