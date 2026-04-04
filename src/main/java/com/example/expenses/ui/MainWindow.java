@@ -29,9 +29,10 @@ public class MainWindow extends JFrame {
         setTitle("Expenses Tracker");//заголовок
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//при нажатии на крестик приложение закрывается
+        setSize(400, 500);
         setLocationRelativeTo(null);//открыть по центру экрана
         setLayout(null);
-        setSize(400, 500);
+
         setResizable(false);
 
         /*СОЗДАЕМ ПАНЕЛИ*/
