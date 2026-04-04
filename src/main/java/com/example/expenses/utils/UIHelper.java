@@ -40,6 +40,15 @@ public class UIHelper {
         return button;
     }
 
+    public static JButton createButton(String text, JPanel panel, int x, int y, int wigth, int height){
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        button.setBounds(x, y, 150, 25);
+        button.putClientProperty("JButton.buttonType", "borderless");
+        panel.add(button);
+        return button;
+    }
+
 
 
 

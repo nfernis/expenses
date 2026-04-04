@@ -80,7 +80,7 @@ public class MainWindow extends JFrame {
 
                                         /*БЮДЖЕТ НА СЕГОДНЯ*/
         JLabel budgetLabel = null;
-        budgetLabel = UIHelper.createLabel("Бюджет на сегодня: " + "р.");
+        budgetLabel = createLabel("Бюджет на сегодня: " + "р.");
         budgetLabel.setBounds(50, 170, 300, 25);
         leftPanel.add(budgetLabel);
         calculateBudget(balanceText, budgetLabel);//насильно вызываем метод для значения баланса по умолчанию
@@ -88,11 +88,8 @@ public class MainWindow extends JFrame {
 
         BudgetCalculator.listenerBalanceField(balanceText, budgetLabel);//а тут уже слушаем энтер или кнопку Рассчитать
 
-        JButton calculateButton = createButton("Рассчитать");
+        JButton calculateButton = createButton("Рассчитать", leftPanel, 50, budgetLabel.getY() + 70, 130, 25);
         //calculateButton.setContentAreaFilled(false);
-        calculateButton.putClientProperty("JButton.buttonType", "borderless");
-        calculateButton.setBounds(50, budgetLabel.getY() + 70, 130, 25);
-        leftPanel.add(calculateButton);
         BudgetCalculator.listenerCalculate(calculateButton, balanceText, budgetLabel);
 
 

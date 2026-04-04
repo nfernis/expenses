@@ -3,7 +3,6 @@ package com.example.expenses.ui;
 import javax.swing.*;
 
 import static com.example.expenses.utils.UIHelper.*;
-import static java.awt.AWTEventMulticaster.add;
 
 public class showButton {
     public static void listener(JButton showButton, JFrame frame, JPanel leftPanel, JPanel rightPanel) {
@@ -48,6 +47,10 @@ public class showButton {
                             rightPanel.add(checkBoxes[i]);
 
                         }
+                        JButton enterButton = createButton("Внести", rightPanel, fields[4].getBounds().x,
+                                fields[4].getBounds().y + 70, 150, 25);
+                        enterButton.setBounds(fields[4].getBounds().x, fields[4].getBounds().y + 70, 150, 25);
+                        enterButton.putClientProperty("JButton.buttonType", "borderless");
                     }else{
                         isOpen[0] = false;
                         frame.remove(rightPanel);

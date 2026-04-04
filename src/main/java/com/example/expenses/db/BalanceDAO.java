@@ -13,8 +13,6 @@ import java.util.logging.Logger;
 public class BalanceDAO {
     private static final Logger LOGGER = Logger.getLogger(BalanceDAO.class.getName());
 
-    // Конструктор принимает уже готовое подключение
-
 
     /*получить актуальный баланс на сегодня, который уже был записан в бд*/
     public static float getBalance() throws SQLException {
