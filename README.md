@@ -24,7 +24,8 @@
 │       │               │   └── TestDB.java
 │       │               ├── service
 │       │               │   ├── BudgetCalculator.java
-│       │               │   └── DaysToSalary.java
+│       │               │   ├── DaysToSalary.java
+│       │               │   └── EnterExpenses.java
 │       │               ├── ui
 │       │               │   ├── MainWindow.java
 │       │               │   └── showButton.java
@@ -36,5 +37,5 @@
 │               └── icon.png
 └── tree.txt
 
-15 directories, 18 files
+15 directories, 19 files
 ```
