@@ -2,6 +2,7 @@ package com.example.expenses.ui;
 
 import javax.swing.*;
 
+import static com.example.expenses.service.EnterExpenses.listenerEnterExpenses;
 import static com.example.expenses.utils.UIHelper.*;
 
 public class showButton {
@@ -51,6 +52,7 @@ public class showButton {
                                 fields[4].getBounds().y + 70, 150, 25);
                         enterButton.setBounds(fields[4].getBounds().x, fields[4].getBounds().y + 70, 150, 25);
                         enterButton.putClientProperty("JButton.buttonType", "borderless");
+                        listenerEnterExpenses(enterButton, fields);
                     }else{
                         isOpen[0] = false;
                         frame.remove(rightPanel);
