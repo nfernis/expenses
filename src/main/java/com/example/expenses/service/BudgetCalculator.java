@@ -7,18 +7,22 @@ import javax.swing.*;
 import java.sql.SQLException;
 
 import static com.example.expenses.db.BalanceDAO.updateBalance;
+import java.util.logging.Logger;
 
 public class BudgetCalculator {
+    private static final Logger LOGGER = Logger.getLogger(DaysToSalary.class.getName());
 
 
 
-    // Метод для кнопки "Рассчитать" (название и сигнатура не меняются)
+    // Метод для кнопки "Рассчитать"
     public static void listenerCalculate(JButton calculateButton, JTextField budget, JLabel budgetLabel) {
         calculateButton.addActionListener(e -> {
             calculateBudget(budget, budgetLabel);
             // а теперь все сохраняем в бд
             try {
                 updateBalance(Float.parseFloat(budget.getText()));
+                LOGGER.info("Пошел выполнять updateBalance");
+
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -53,6 +57,8 @@ public class BudgetCalculator {
             float total = balance / days;
 
             budgetLabel.setText("Бюджет на сегодня: " + String.format("%.2f", total) + " р.");
+            LOGGER.info("Выполнил updateBalance и вывел");
+
         } catch (NumberFormatException e) {
             budgetLabel.setText("Бюджет на сегодня: ошибка!");
         }

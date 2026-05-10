@@ -1,7 +1,10 @@
 package com.example.expenses;
+import com.example.expenses.db.DBConnection;
 import com.example.expenses.ui.MainWindow;
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.logging.*;
 
@@ -29,5 +32,13 @@ public class Main {
         //запуск окна
         MainWindow window = new MainWindow();
         window.setVisible(true);
+
+        window.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                DBConnection.shutdown(); // 👈 Только это!
+                System.exit(0);
+            }
+        });
     }
 }

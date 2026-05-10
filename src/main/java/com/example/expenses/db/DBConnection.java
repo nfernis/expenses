@@ -13,48 +13,55 @@ import com.example.expenses.utils.CustomLevel;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.logging.Logger;
 
 public class DBConnection {
     private static final Logger LOGGER = Logger.getLogger(DBConnection.class.getName());
-    private static HikariDataSource dataSource;
 
-    private static final String URL = "jdbc:postgresql://aws-1-eu-central-1.pooler.supabase.com:6543/postgres";
+
+    private static final String URL = "jdbc:postgresql://aws-1-eu-central-1.pooler.supabase.com:6543/postgres?sslmode=require";
     private static final String USER = "postgres.znfdtsteycufrmpvlkbf";
     private static final String PASSWORD = "18012001Ujl.16042000Ujl.";
 
     // Инициализация пула (вызвать один раз при старте приложения)
-    public static void initPool() {
+    private static final DataSource dataSource;
+
+    // 🚀 Статический блок инициализации — выполняется один раз при старте приложения
+    static {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(URL);
         config.setUsername(USER);
         config.setPassword(PASSWORD);
-        config.setMaximumPoolSize(5);
-        config.setMinimumIdle(1);
-        config.setConnectionTimeout(10000);
-        config.setIdleTimeout(600000);
-        config.setMaxLifetime(1800000);
+
+        // ⚙️ Настройки пула для Supabase
+        config.setMaximumPoolSize(5);           // Максимум 5 активных соединений
+        config.setMinimumIdle(2);               // Держать минимум 2 "тёплых" соединения
+        config.setConnectionTimeout(10_000);    // 10 сек ждать свободное соединение
+        config.setMaxLifetime(240_000);         // Закрывать соединение через 4 мин (меньше таймаута Supabase)
+        config.setKeepaliveTime(30_000);        // Пинговать каждые 30 сек, чтобы соединение не умерло
+        config.setValidationTimeout(5_000);     // 5 сек на проверку "живости" соединения
+
+        // 🧪 Опционально: имя пула для логов
+        config.setPoolName("SupabasePool");
 
         dataSource = new HikariDataSource(config);
-        LOGGER.info("Пул соединений инициализирован");
+        LOGGER.info("Пул соединений инициализирован: " + config.getPoolName());
     }
-
-    // Получение соединения из пула
+    // 🔗 Метод получения соединения — используется во всём приложении
     public static Connection getConnection() throws SQLException {
-        if (dataSource == null) {
-            initPool();
-        }
         return dataSource.getConnection();
     }
 
-    // Закрытие пула (при завершении приложения)
-    public static void closePool() {
-        if (dataSource != null) {
-            dataSource.close();
+    // 🧹 Метод для корректного закрытия пула при выходе из приложения
+    public static void shutdown() {
+        if (dataSource instanceof HikariDataSource hikari) {
+            hikari.close();
             LOGGER.info("Пул соединений закрыт");
         }
     }
+
 
 }
 

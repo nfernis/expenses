@@ -29,7 +29,7 @@ public class showButton {
 
 
                         /*РАСХОДЫ*/
-                        String[] types = {"Аренда", "ЖКХ", "Долг", "Я.Музыка", "Интернет"};
+                        String[] types = {"Долг", "Я.Музыка"};
                         JTextField[] fields = new JTextField[types.length];
                         JCheckBox[] checkBoxes = new JCheckBox[types.length];
 
@@ -48,9 +48,9 @@ public class showButton {
                             rightPanel.add(checkBoxes[i]);
 
                         }
-                        JButton enterButton = createButton("Внести", rightPanel, fields[4].getBounds().x,
-                                fields[4].getBounds().y + 70, 150, 25);
-                        enterButton.setBounds(fields[4].getBounds().x, fields[4].getBounds().y + 70, 150, 25);
+                        JButton enterButton = createButton("Внести", rightPanel, fields[1].getBounds().x,
+                                fields[1].getBounds().y + 70, 150, 25);
+                        enterButton.setBounds(fields[1].getBounds().x, fields[1].getBounds().y + 70, 150, 25);
                         enterButton.putClientProperty("JButton.buttonType", "borderless");
                         listenerEnterExpenses(enterButton, fields);
                     }else{

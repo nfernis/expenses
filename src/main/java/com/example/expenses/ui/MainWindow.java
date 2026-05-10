@@ -23,7 +23,6 @@ public class MainWindow extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(MainWindow.class.getName());
 
     public MainWindow() throws SQLException {
-        DBConnection.initPool();
         //LOGGER.log(CustomLevel.TEST, "Тестовое сообщение");
                                         /*САМО ОКНО*/
         setTitle("Expenses Tracker");//заголовок

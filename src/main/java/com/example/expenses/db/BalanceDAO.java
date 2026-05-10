@@ -36,6 +36,7 @@ public class BalanceDAO {
     }
     /*записать актуальный баланс на сегодня в бд*/
     public static void updateBalance(float balance) throws SQLException {
+        LOGGER.info( "Мы в updateBalance");
         String query ="insert into balances(balance)\n" +
                 "values (?)";
         Float getBalance = getBalance();
@@ -47,6 +48,7 @@ public class BalanceDAO {
             ps.setBigDecimal(1, bd);
             if(getBalance != null && Math.abs(getBalance - balance) > 0.01f) {
                 ps.executeUpdate();
+                LOGGER.info( "Записал новые данные updateBalance()");
             }
         } catch (Exception e) {
             LOGGER.severe("Не удалось подключиться к supabase из updateBalance()");
